@@ -1,0 +1,368 @@
+﻿<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{0FD0DD4E-15B2-4876-92CA-81B32A8D447A}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WebApplication1_NoteMarketPlace</RootNamespace>
+    <AssemblyName>WebApplication1_NoteMarketPlace</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort>44309</IISExpressSSLPort>
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System.Web.Razor">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.7\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.7\lib\net45\System.Web.Webpages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages.Deployment">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.7\lib\net45\System.Web.Webpages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages.Razor">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.7\lib\net45\System.Web.Webpages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Helpers">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.7\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.7\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\css\bootstrap.min.css" />
+    <Content Include="Content\css\bootstrap\bootstrap.css" />
+    <Content Include="Content\css\font-awesome\css\font-awesome.css" />
+    <Content Include="Content\css\font-awesome\css\font-awesome.min.css" />
+    <Content Include="Content\css\font-awesome\fonts\fontawesome-webfont.svg" />
+    <Content Include="Content\css\responsive.css" />
+    <Content Include="Content\css\style.css" />
+    <Content Include="Content\images\Add-notes\banner-with-overlay.jpg" />
+    <Content Include="Content\images\Add-notes\banner.jpg" />
+    <Content Include="Content\images\assets\1.jpg" />
+    <Content Include="Content\images\assets\2.jpg" />
+    <Content Include="Content\images\assets\3.jpg" />
+    <Content Include="Content\images\assets\4.jpg" />
+    <Content Include="Content\images\assets\5.jpg" />
+    <Content Include="Content\images\assets\6.jpg" />
+    <Content Include="Content\images\assets\banner-with-overlay.jpg" />
+    <Content Include="Content\images\assets\banner.jpg" />
+    <Content Include="Content\images\assets\calendar.png" />
+    <Content Include="Content\images\assets\close.png" />
+    <Content Include="Content\images\assets\down-arrow.png" />
+    <Content Include="Content\images\assets\edit.png" />
+    <Content Include="Content\images\assets\eye.png" />
+    <Content Include="Content\images\assets\search.jpg" />
+    <Content Include="Content\images\assets\SUCCESS.png" />
+    <Content Include="Content\images\assets\upload.png" />
+    <Content Include="Content\images\background\banner-with-overlay.jpg" />
+    <Content Include="Content\images\banner-with-overlay.jpg" />
+    <Content Include="Content\images\banner.jpg" />
+    <Content Include="Content\images\Dashboard\earning-icon.svg" />
+    <Content Include="Content\images\Dashboard\edit.png" />
+    <Content Include="Content\images\Dashboard\eye.png" />
+    <Content Include="Content\images\Dashboard\logo.png" />
+    <Content Include="Content\images\Dashboard\search-icon.svg" />
+    <Content Include="Content\images\Dashboard\search.jpg" />
+    <Content Include="Content\images\Dashboard\user-img.png" />
+    <Content Include="Content\images\header\user-1.jpg" />
+    <Content Include="Content\images\header\user-img.png" />
+    <Content Include="Content\images\icons\arrow-down.png" />
+    <Content Include="Content\images\icons\close.png" />
+    <Content Include="Content\images\icons\date.png" />
+    <Content Include="Content\images\icons\delete.png" />
+    <Content Include="Content\images\icons\dots.png" />
+    <Content Include="Content\images\icons\download.png" />
+    <Content Include="Content\images\icons\edit.png" />
+    <Content Include="Content\images\icons\eye.png" />
+    <Content Include="Content\images\icons\facebook.png" />
+    <Content Include="Content\images\icons\flag.png" />
+    <Content Include="Content\images\icons\left-arrow.png" />
+    <Content Include="Content\images\icons\linkedin.png" />
+    <Content Include="Content\images\icons\minus.png" />
+    <Content Include="Content\images\icons\my-earning.png" />
+    <Content Include="Content\images\icons\pages.png" />
+    <Content Include="Content\images\icons\plus.png" />
+    <Content Include="Content\images\icons\right-arrow.png" />
+    <Content Include="Content\images\icons\search-icon.png" />
+    <Content Include="Content\images\icons\seller.png" />
+    <Content Include="Content\images\icons\SUCCESS.png" />
+    <Content Include="Content\images\icons\top-logo.png" />
+    <Content Include="Content\images\icons\twitter.png" />
+    <Content Include="Content\images\icons\university.png" />
+    <Content Include="Content\images\icons\upload-file.png" />
+    <Content Include="Content\images\icons\upload-note.png" />
+    <Content Include="Content\images\logo\download.png" />
+    <Content Include="Content\images\logo\eye.png" />
+    <Content Include="Content\images\logo\favicon.ico" />
+    <Content Include="Content\images\logo\logo-blue.png" />
+    <Content Include="Content\images\logo\logo-white.png" />
+    <Content Include="Content\images\mydownloads\more.png" />
+    <Content Include="Content\images\Notes-Details\1.jpg" />
+    <Content Include="Content\images\Notes-Details\close.png" />
+    <Content Include="Content\images\Notes-Details\reviewer-1.png" />
+    <Content Include="Content\images\Notes-Details\reviewer-2.png" />
+    <Content Include="Content\images\Notes-Details\reviewer-3.png" />
+    <Content Include="Content\images\Notes-Details\SUCCESS.png" />
+    <Content Include="Content\images\Notes-Details\user-img.png" />
+    <Content Include="Content\images\search\1.jpg" />
+    <Content Include="Content\images\search\2.jpg" />
+    <Content Include="Content\images\search\3.jpg" />
+    <Content Include="Content\images\search\4.jpg" />
+    <Content Include="Content\images\search\5.jpg" />
+    <Content Include="Content\images\search\6.jpg" />
+    <Content Include="Content\images\search\banner-with-overlay.jpg" />
+    <Content Include="Content\images\search\banner.jpg" />
+    <Content Include="Content\images\testimonial\customer-1.png" />
+    <Content Include="Content\images\testimonial\customer-2.png" />
+    <Content Include="Content\images\testimonial\customer-3.png" />
+    <Content Include="Content\images\testimonial\customer-4.png" />
+    <Content Include="Content\images\testimonial\t1.jpg" />
+    <Content Include="Content\images\testimonial\t2.jpg" />
+    <Content Include="Content\images\testimonial\t3.jpg" />
+    <Content Include="Content\images\testimonial\t4.jpg" />
+    <Content Include="Content\images\User-Profile\banner-with-overlay.jpg" />
+    <Content Include="Content\images\User-Profile\banner.jpg" />
+    <Content Include="Content\images\User-Profile\calendar.png" />
+    <Content Include="Content\images\User-Profile\down-arrow.png" />
+    <Content Include="Content\images\User-Profile\upload.png" />
+    <Content Include="Content\images\user\member.png" />
+    <Content Include="Content\images\user\user-img.png" />
+    <Content Include="DBModel\NotesMarketPlaceDBModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>NotesMarketPlaceDBModel.Context.cs</LastGenOutput>
+      <DependentUpon>NotesMarketPlaceDBModel.edmx</DependentUpon>
+    </Content>
+    <Content Include="DBModel\NotesMarketPlaceDBModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>NotesMarketPlaceDBModel.edmx</DependentUpon>
+      <LastGenOutput>NotesMarketPlaceDBModel.cs</LastGenOutput>
+    </Content>
+    <Content Include="EmailTemplate\AccountConfirmation.html" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\css\font-awesome\fonts\fontawesome-webfont.eot" />
+    <Content Include="Content\css\font-awesome\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Content\css\font-awesome\fonts\fontawesome-webfont.woff" />
+    <Content Include="Content\css\font-awesome\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Content\css\font-awesome\fonts\FontAwesome.otf" />
+    <Content Include="Content\images\assets.zip" />
+    <Content Include="Content\images\logo\Thumbs.db" />
+    <Content Include="Content\images\Notes-Details\Thumbs.db" />
+    <Content Include="Content\images\pdf-sample.pdf" />
+    <Content Include="Content\images\User-Profile\Thumbs.db" />
+    <Content Include="Scripts\js\bootstrap.min.js" />
+    <Content Include="Scripts\js\bootstrap\bootstrap.js" />
+    <Content Include="Scripts\js\jquery.js" />
+    <Content Include="Scripts\js\jquery.min.js" />
+    <Content Include="Scripts\js\popper.min.js" />
+    <Content Include="Scripts\js\script.js" />
+    <Content Include="Web.config" />
+    <Content Include="Views\Home\Contact.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="DBModel\NotesMarketPlaceDBModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>NotesMarketPlaceDBModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBModel\NotesMarketPlaceDBModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>NotesMarketPlaceDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBModel\NotesMarketPlaceDBModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>NotesMarketPlaceDBModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="DBModel\tblCountry.cs">
+      <DependentUpon>NotesMarketPlaceDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBModel\tblDownload.cs">
+      <DependentUpon>NotesMarketPlaceDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBModel\tblNoteCategory.cs">
+      <DependentUpon>NotesMarketPlaceDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBModel\tblNoteType.cs">
+      <DependentUpon>NotesMarketPlaceDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBModel\tblReferenceData.cs">
+      <DependentUpon>NotesMarketPlaceDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBModel\tblSellerNote.cs">
+      <DependentUpon>NotesMarketPlaceDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBModel\tblSellerNotesAttachement.cs">
+      <DependentUpon>NotesMarketPlaceDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBModel\tblSellerNotesReportedIssue.cs">
+      <DependentUpon>NotesMarketPlaceDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBModel\tblSellerNotesReview.cs">
+      <DependentUpon>NotesMarketPlaceDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBModel\tblSystemConfiguration.cs">
+      <DependentUpon>NotesMarketPlaceDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBModel\tblUser.cs">
+      <DependentUpon>NotesMarketPlaceDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBModel\tblUserProfile.cs">
+      <DependentUpon>NotesMarketPlaceDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBModel\tblUserRole.cs">
+      <DependentUpon>NotesMarketPlaceDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ContactModel.cs" />
+    <Compile Include="Models\LoginModel.cs" />
+    <Compile Include="Models\UserModel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\web.config" />
+    <EntityDeploy Include="DBModel\NotesMarketPlaceDBModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>NotesMarketPlaceDBModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="DBModel\NotesMarketPlaceDBModel.edmx.diagram">
+      <DependentUpon>NotesMarketPlaceDBModel.edmx</DependentUpon>
+    </Content>
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <None Include="packages.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Shared\fixed_layout.cshtml" />
+    <Content Include="Views\Shared\_loginPartial.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Account\Signup.cshtml" />
+    <Content Include="Views\Home\SearchNotes.cshtml" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>4396</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>https://localhost:44309/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
