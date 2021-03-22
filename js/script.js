@@ -4,28 +4,35 @@
 ============================================ */
 
 function sticky_header() {
-    var header_height = jQuery('.home_navbar').innerHeight() / 2;
-    var scrollTop = jQuery(window).scrollTop();;
+    var header_height = $('.home_navbar').innerHeight() / 2;
+    var scrollTop = $(window).scrollTop();
     if (scrollTop > header_height) {
-        jQuery('body').addClass('sticky-nav')
+        $('body').addClass('sticky-nav');
         $(".home_navbar .navbar img").attr("src", "images/logo/logo-blue.png");
     } else {
-        jQuery('body').removeClass('sticky-nav')
+        $('body').removeClass('sticky-nav');
         $(".home_navbar .navbar img").attr("src", "images/logo/logo-white.png");
     }
 }
 
-jQuery(document).ready(function () {
+$(document).ready(function () {
   sticky_header();
 });
 
-jQuery(window).scroll(function () {
+$(window).scroll(function () {
   sticky_header();  
 });
-jQuery(window).resize(function () {
+$(window).resize(function () {
   sticky_header();
 });
 
+
+$("#mobile-nav-icon").click(function(){
+
+  $('body').addClass('sticky-nav');
+  $(".home_navbar .navbar img").attr("src", "images/logo/logo-blue.png");
+  
+});
 
 /*================================
  Password eye icon

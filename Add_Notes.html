@@ -45,7 +45,7 @@
                         <a class="nav-link" href="search_page.html">Search Notes</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="Add_Notes.html">Sell Your Notes</a>
+                        <a class="nav-link" href="dashboard.html">Sell Your Notes</a>
                     </li>
                     <li class="nav-item">
                          <a class="nav-link" href="Buyer_Request.html">Buyer Requests</a>
@@ -240,11 +240,11 @@
                      <div class="form-group">
                          <label for="exampleInputfname">Sell For*</label>
                          <div class="form-check form-check-inline">
-                             <input class="form-check-input" type="radio" name="inlineRadioOptions" id="free" value="option1">
+                             <input class="form-check-input" type="radio" name="inlineRadioOptions" id="free" value="option1" onclick="disable()">
                              <label class="form-check-label" for="inlineRadio1" style="margin-left: 10px;">Free</label>
                          </div>
                          <div class="form-check form-check-inline">
-                             <input class="form-check-input" type="radio" name="inlineRadioOptions" id="paid" value="option2">
+                             <input class="form-check-input" type="radio" name="inlineRadioOptions" id="paid" value="option2" onclick="undisable()">
                              <label class="form-check-label" for="inlineRadio2" style="margin-left: 10px;">Paid</label>
                          </div>
 
@@ -305,7 +305,17 @@
     <!-- footer end -->
 
             
-         
+    <script>
+         function disable()
+         {
+            document.getElementById("sell-price").disabled=true;
+         }
+
+         function undisable()
+         {
+            document.getElementById("sell-price").disabled=false;
+         }
+     </script>     
      
 
 

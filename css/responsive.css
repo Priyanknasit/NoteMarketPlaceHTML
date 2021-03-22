@@ -292,6 +292,7 @@
     /* Searchbar */
     .dashboard_table .download_heading {
         font-size: 26px;
+        padding-left: 16px;
     }
 
 
@@ -525,6 +526,7 @@
     .dashboard_table .download_heading {
         padding-top: 0;
         font-size: 26px;
+        padding-left: 16px;
     }
 
     .search-note {
@@ -608,6 +610,12 @@
 @media(max-width: 480px) {
 
     /* Home */
+
+    .home,
+    .home_img{
+    	height: 520px;
+    }
+    
      .home-text {
         top: 2%;
         height: 530px;
@@ -738,6 +746,20 @@
     /* Dasboard */
     .dashboard_top .main_heading {
         font-size: 26px;
+        padding-left: 16px;
+    }
+
+    .dashboard_table .heading{
+        padding-left: 16px;
+    }
+
+    .dashboard_top .boxes {
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+
+    .dashboard_top .add_btn{
+        padding-right: 16px;
     }
 
     .dashboard_top .add_btn button {
@@ -751,6 +773,11 @@
 
     .dashboard_top .sold_box {
         padding-top: 0 !important;
+    }
+
+    .dashboard_table .booktable{
+        margin-left: 1px;
+        margin-right: 1px;
     }
 
     /* Searchbar */
@@ -878,6 +905,11 @@
 
     /* Home */
 
+    .home,
+    .home_img{
+    	height: 520px;
+    }
+
     .about_heading {
         margin-bottom: 30px;
     }
@@ -973,6 +1005,21 @@
     /* Dasboard */
     .dashboard_top .main_heading {
         font-size: 26px;
+        padding-left: 16px;
+    }
+
+    .dashboard_top .boxes {
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+
+    .dashboard_table .heading{
+        padding-left: 16px;
+    }
+
+
+    .dashboard_top .add_btn{
+        padding-right: 16px;
     }
 
     .dashboard_top .add_btn button {
@@ -995,6 +1042,7 @@
     /* Searchbar */
     .dashboard_table .download_heading {
         padding-top: 20px;
+        padding-left: 16px;
     }
 
     .search-note {
@@ -1054,6 +1102,11 @@
 @media(max-width: 320px) {
 
     /* Home */
+    .home,
+    .home_img{
+    	height: 520px;
+    }
+
     .home-text {
         top: 2%;
         height: 530px;
@@ -1226,6 +1279,7 @@
     /* Searchbar */
     .dashboard_table .download_heading {
         padding-top: 20px;
+        padding-left: 16px;
     }
 
     .search-note {

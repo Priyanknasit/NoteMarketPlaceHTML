@@ -947,10 +947,12 @@ input[type=radio] {
 /* =========================================
                 Navigation
 ============================================ */
+.navbar-light .navbar-toggler-icon{
+    background-color: white;
+}
+
 .navbar {
     background: #fff !important;
-    padding-left: 30px;
-    padding-right: 30px;
     box-shadow: 0 0 30px 0 rgba(0, 0, 0, 0.08);
 }
 .navbar-light .navbar-nav .nav-link {
@@ -1634,7 +1636,6 @@ input[type=radio] {
     text-transform: uppercase;
     -webkit-transition: all 0.6s;
     transition: all 0.6s;
-    float: right;
 }
 
 .search_button button:hover {
