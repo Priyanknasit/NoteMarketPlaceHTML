@@ -195,7 +195,7 @@
     <Property Name="City" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="State" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="ZipCode" Type="varchar" MaxLength="50" Nullable="false" />
-    <Property Name="Country" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Country" Type="int" Nullable="false" />
     <Property Name="University" Type="varchar" MaxLength="100" />
     <Property Name="College" Type="varchar" MaxLength="100" />
     <Property Name="CreatedDate" Type="datetime" />
@@ -420,6 +420,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_tblUserProfile_tblCountries">
+    <End Role="tblCountries" Type="Self.tblCountries" Multiplicity="1" />
+    <End Role="tblUserProfile" Type="Self.tblUserProfile" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblCountries">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="tblUserProfile">
+        <PropertyRef Name="Country" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_tblUserProfile_tblReferenceData">
     <End Role="tblReferenceData" Type="Self.tblReferenceData" Multiplicity="0..1" />
     <End Role="tblUserProfile" Type="Self.tblUserProfile" Multiplicity="*" />
@@ -525,6 +537,10 @@
     <AssociationSet Name="FK_tblUser_tblUserRole" Association="Self.FK_tblUser_tblUserRole">
       <End Role="tblUserRole" EntitySet="tblUserRole" />
       <End Role="tblUser" EntitySet="tblUser" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblUserProfile_tblCountries" Association="Self.FK_tblUserProfile_tblCountries">
+      <End Role="tblCountries" EntitySet="tblCountries" />
+      <End Role="tblUserProfile" EntitySet="tblUserProfile" />
     </AssociationSet>
     <AssociationSet Name="FK_tblUserProfile_tblReferenceData" Association="Self.FK_tblUserProfile_tblReferenceData">
       <End Role="tblReferenceData" EntitySet="tblReferenceData" />

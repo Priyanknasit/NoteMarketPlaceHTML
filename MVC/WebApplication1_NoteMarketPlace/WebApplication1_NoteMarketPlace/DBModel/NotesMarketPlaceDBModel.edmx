@@ -200,7 +200,7 @@
           <Property Name="City" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="State" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="ZipCode" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="Country" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Country" Type="int" Nullable="false" />
           <Property Name="University" Type="varchar" MaxLength="100" />
           <Property Name="College" Type="varchar" MaxLength="100" />
           <Property Name="CreatedDate" Type="datetime" />
@@ -425,6 +425,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_tblUserProfile_tblCountries">
+          <End Role="tblCountries" Type="Self.tblCountries" Multiplicity="1" />
+          <End Role="tblUserProfile" Type="Self.tblUserProfile" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblCountries">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tblUserProfile">
+              <PropertyRef Name="Country" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_tblUserProfile_tblReferenceData">
           <End Role="tblReferenceData" Type="Self.tblReferenceData" Multiplicity="0..1" />
           <End Role="tblUserProfile" Type="Self.tblUserProfile" Multiplicity="*" />
@@ -531,6 +543,10 @@
             <End Role="tblUserRole" EntitySet="tblUserRole" />
             <End Role="tblUser" EntitySet="tblUser" />
           </AssociationSet>
+          <AssociationSet Name="FK_tblUserProfile_tblCountries" Association="Self.FK_tblUserProfile_tblCountries">
+            <End Role="tblCountries" EntitySet="tblCountries" />
+            <End Role="tblUserProfile" EntitySet="tblUserProfile" />
+          </AssociationSet>
           <AssociationSet Name="FK_tblUserProfile_tblReferenceData" Association="Self.FK_tblUserProfile_tblReferenceData">
             <End Role="tblReferenceData" EntitySet="tblReferenceData" />
             <End Role="tblUserProfile" EntitySet="tblUserProfile" />
@@ -558,6 +574,7 @@
           <Property Name="ModifiedBy" Type="Int32" />
           <Property Name="IsActive" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="tblSellerNotes" Relationship="Self.FK_tblSellerNotes_tblCountries" FromRole="tblCountries" ToRole="tblSellerNotes" />
+          <NavigationProperty Name="tblUserProfiles" Relationship="Self.FK_tblUserProfile_tblCountries" FromRole="tblCountries" ToRole="tblUserProfile" />
         </EntityType>
         <EntityType Name="tblDownload">
           <Key>
@@ -775,13 +792,14 @@
           <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="State" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="ZipCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Country" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Country" Type="Int32" Nullable="false" />
           <Property Name="University" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="College" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="CreatedDate" Type="DateTime" Precision="3" />
           <Property Name="CreatedBy" Type="Int32" />
           <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
           <Property Name="ModifiedBy" Type="Int32" />
+          <NavigationProperty Name="tblCountry" Relationship="Self.FK_tblUserProfile_tblCountries" FromRole="tblUserProfile" ToRole="tblCountries" />
           <NavigationProperty Name="tblReferenceData" Relationship="Self.FK_tblUserProfile_tblReferenceData" FromRole="tblUserProfile" ToRole="tblReferenceData" />
           <NavigationProperty Name="tblUser" Relationship="Self.FK_tblUserProfile_tblUser" FromRole="tblUserProfile" ToRole="tblUser" />
         </EntityType>
@@ -807,6 +825,18 @@
               <PropertyRef Name="ID" />
             </Principal>
             <Dependent Role="tblSellerNotes">
+              <PropertyRef Name="Country" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblUserProfile_tblCountries">
+          <End Role="tblCountries" Type="Self.tblCountry" Multiplicity="1" />
+          <End Role="tblUserProfile" Type="Self.tblUserProfile" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblCountries">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tblUserProfile">
               <PropertyRef Name="Country" />
             </Dependent>
           </ReferentialConstraint>
@@ -1044,6 +1074,10 @@
           <AssociationSet Name="FK_tblSellerNotes_tblCountries" Association="Self.FK_tblSellerNotes_tblCountries">
             <End Role="tblCountries" EntitySet="tblCountries" />
             <End Role="tblSellerNotes" EntitySet="tblSellerNotes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblUserProfile_tblCountries" Association="Self.FK_tblUserProfile_tblCountries">
+            <End Role="tblCountries" EntitySet="tblCountries" />
+            <End Role="tblUserProfile" EntitySet="tblUserProfiles" />
           </AssociationSet>
           <AssociationSet Name="FK_tblDownloads_tblSellerNotes" Association="Self.FK_tblDownloads_tblSellerNotes">
             <End Role="tblSellerNotes" EntitySet="tblSellerNotes" />

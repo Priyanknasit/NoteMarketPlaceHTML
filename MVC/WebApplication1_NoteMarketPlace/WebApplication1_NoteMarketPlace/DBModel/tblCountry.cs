@@ -18,6 +18,7 @@ namespace WebApplication1_NoteMarketPlace.DBModel
         public tblCountry()
         {
             this.tblSellerNotes = new HashSet<tblSellerNote>();
+            this.tblUserProfiles = new HashSet<tblUserProfile>();
         }
     
         public int ID { get; set; }
@@ -31,5 +32,7 @@ namespace WebApplication1_NoteMarketPlace.DBModel
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblSellerNote> tblSellerNotes { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tblUserProfile> tblUserProfiles { get; set; }
     }
 }

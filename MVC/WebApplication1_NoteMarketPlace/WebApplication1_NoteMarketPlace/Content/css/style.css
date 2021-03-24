@@ -369,11 +369,52 @@ label {
 
 /* User form */
 
-.form-heading h3{
+.upload-input {
+    position: relative;
+    cursor: pointer;
+}
+
+input#NotePreview.form-control,
+input#UploadNotes.form-control,
+input#DisplayPicture.form-control,
+input#ProfilePicture.form-control {
+    height: 125px;
+    opacity: 0;
+    border: 1px solid #ced4da;
+}
+
+.upload-input .upload-img {
+    width: 100%;
+    height: 100%;
+    border: 1px solid #ced4da;
+    border-radius: 3px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.upload-input .upload-img img{
+    position: relative;
+    top: 12px;
+}
+
+.upload-input .upload-img p{
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 20px;
+    color: #8a8a8a;
+    margin-top: 20px;
+}
+
+
+/**********/
+.form-heading h3 {
     font-family: Open Sans;
     font-size: 34px;
     font-weight: 600;
-    line-height: 38px; 
+    line-height: 38px;
     color: #6255a5;
     padding: 60px 0 40px 0;
     margin: 0;
@@ -1643,6 +1684,10 @@ input[type=radio] {
 }
 
 
+/* Table icon */
+
+
+
 
 
 
@@ -1871,6 +1916,14 @@ input[type=radio] {
 }
 /*--  admin code end  --*/
 
+/*pagination datatable*/
+div.dataTables_paginate ul.pagination{
+    justify-content: center !important;
+    padding: 0;
+}
+
+#inPublishtbl,
+#inProgresstbl,
 .dashboard_table .booktable {
     margin-top: 20px;
     border: 1px solid #d1d1d1;

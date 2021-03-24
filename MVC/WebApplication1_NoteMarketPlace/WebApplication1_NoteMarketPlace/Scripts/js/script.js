@@ -63,3 +63,77 @@ for (i = 0; i < acc.length; i++) {
     }
   });
 }
+
+// Add notes
+function disable() {
+    document.getElementById("sell-price").disabled = true;
+}
+
+function undisable() {
+    document.getElementById("sell-price").disabled = false;
+}
+
+// user profile
+
+// get profile picture 
+$('#upload_profile').click(function () {
+    $("#ProfilePicture").click();
+});
+
+// add notes
+
+// get display picture
+$('#upload_dp').click(function () {
+    $("#DisplayPicture").click();
+});
+
+// get note 
+$('#upload_notes').click(function () {
+    $("#UploadNotes").click();
+});
+
+// get note preview
+$('#NotePreview_img').click(function () {
+    $("#NotePreview").click();
+});
+
+
+// Pagination
+
+
+$(function () {
+    var table = $('#inProgresstbl').DataTable({
+        'pageLength': 5,
+        'dom':'tp',
+        'language': {
+            'paginate': {
+                'previous': '<a aria-hidden="true"> <img src="../Content/images/icons/left-arrow.png" alt="previous"> </a>',
+                'next': '<a aria-hidden="true"> <img src="../Content/images/icons/right-arrow.png"> </a>'
+            }
+        }
+    });
+
+    $('.searc_btn').click(function () {
+        table.search($(' #searchbox').val()).draw();
+    });
+});
+
+$(function () {
+    var table = $('#inPublishtbl').DataTable({
+        'pageLength': 5,
+        'dom': 'tp',
+        'language': {
+            'paginate': {
+                'previous': '<a aria-hidden="true"> <img src="../Content/images/icons/left-arrow.png" alt="previous"> </a>',
+                'next': '<a aria-hidden="true"> <img src="../Content/images/icons/right-arrow.png" alt="next"> </a>'
+            }
+        }
+    });
+
+    $('.search_publish_btn').click(function () {
+        table.search($(' #search_publish_box').val()).draw();
+    });
+});
+
+
+

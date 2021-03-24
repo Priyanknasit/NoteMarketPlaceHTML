@@ -27,7 +27,7 @@ namespace WebApplication1_NoteMarketPlace.DBModel
         public string City { get; set; }
         public string State { get; set; }
         public string ZipCode { get; set; }
-        public string Country { get; set; }
+        public int Country { get; set; }
         public string University { get; set; }
         public string College { get; set; }
         public Nullable<System.DateTime> CreatedDate { get; set; }
@@ -35,6 +35,7 @@ namespace WebApplication1_NoteMarketPlace.DBModel
         public Nullable<System.DateTime> ModifiedDate { get; set; }
         public Nullable<int> ModifiedBy { get; set; }
     
+        public virtual tblCountry tblCountry { get; set; }
         public virtual tblReferenceData tblReferenceData { get; set; }
         public virtual tblUser tblUser { get; set; }
     }

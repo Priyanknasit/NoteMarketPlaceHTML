@@ -196,8 +196,8 @@
     <Content Include="Content\images\user\user-img.png" />
     <Content Include="DBModel\NotesMarketPlaceDBModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>NotesMarketPlaceDBModel.Context.cs</LastGenOutput>
       <DependentUpon>NotesMarketPlaceDBModel.edmx</DependentUpon>
+      <LastGenOutput>NotesMarketPlaceDBModel.Context.cs</LastGenOutput>
     </Content>
     <Content Include="DBModel\NotesMarketPlaceDBModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -229,7 +229,9 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="DBModel\NotesMarketPlaceDBModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -287,13 +289,21 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\AddNoteModel.cs" />
     <Compile Include="Models\ContactModel.cs" />
+    <Compile Include="Models\DashboardInProgressModel.cs" />
+    <Compile Include="Models\ForgotPasswordModel.cs" />
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\UserModel.cs" />
+    <Compile Include="Models\UserProfileModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <EntityDeploy Include="DBModel\NotesMarketPlaceDBModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>NotesMarketPlaceDBModel.Designer.cs</LastGenOutput>
@@ -301,19 +311,22 @@
     <Content Include="DBModel\NotesMarketPlaceDBModel.edmx.diagram">
       <DependentUpon>NotesMarketPlaceDBModel.edmx</DependentUpon>
     </Content>
-    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
-    <Content Include="fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <None Include="packages.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\fixed_layout.cshtml" />
-    <Content Include="Views\Shared\_loginPartial.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Account\Signup.cshtml" />
-    <Content Include="Views\Home\SearchNotes.cshtml" />
+    <Content Include="Views\User\SearchNotes.cshtml" />
+    <Content Include="Views\Account\ForgotPassword.cshtml" />
+    <Content Include="Views\Admin\Dashboard.cshtml" />
+    <Content Include="Views\Shared\Admin_layout.cshtml" />
+    <Content Include="Views\User\Dashboard.cshtml" />
+    <Content Include="Views\Shared\Member_layout.cshtml" />
+    <Content Include="Views\Home\Faq.cshtml" />
+    <Content Include="Views\User\AddNote.cshtml" />
+    <Content Include="Views\User\UserProfile.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -28,7 +28,7 @@
     <!-- Header -->
     <section id="nav-bar" class="home_navbar">
         <nav class="navbar navbar-expand-lg navbar-light ">
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand" href="@Url.Action("index","home")">
                 <img src="~/Content/images/logo/logo-white.png" alt="logo">
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -38,13 +38,20 @@
             <div class="collapse navbar-collapse " id="navbarSupportedContent">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="SearchNotes">Search Notes</a>
+                        <a class="nav-link" href="@Url.Action("SearchNotes","User")">Search Notes</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="dashboard.html">Sell Your Notes</a>
+                        @if (Session["EmailID"] == null)
+                        {
+                            <a class="nav-link" href="@Url.Action("Login","Account")">Sell Your Notes</a>
+                        }
+                        else
+                        {
+                            <a class="nav-link" href="@Url.Action("Dashboard","User")">Sell Your Notes</a>
+                        }
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="faq.html">FAQ</a>
+                        <a class="nav-link" href="@Url.Action("Faq","Home")">FAQ</a>
                     </li>
                     <li class="nav-item">
                         @Html.ActionLink("Contact Us","Contact","Home",null, new { @class = "nav-link"})

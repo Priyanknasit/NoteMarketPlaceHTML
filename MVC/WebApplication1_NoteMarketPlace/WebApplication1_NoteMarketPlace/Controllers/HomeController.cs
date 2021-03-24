@@ -25,6 +25,11 @@ namespace WebApplication1_NoteMarketPlace.Controllers
             return View();
         }
 
+        public ActionResult Faq()
+        {
+            return View();
+        }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Contact(ContactModel model)
@@ -57,10 +62,7 @@ namespace WebApplication1_NoteMarketPlace.Controllers
             return View(model);
         }
 
-        public ActionResult SearchNotes()
-        {
-            return View();
-        }
+       
     }
 
 }

@@ -1,0 +1,184 @@
+﻿@model WebApplication1_NoteMarketPlace.Models.UserProfileModel
+
+
+@{
+    ViewBag.Title = "My Profile";
+    Layout = "~/Views/Shared/Member_layout.cshtml";
+}
+
+<!-- User banner -->
+<div class="banner-image m-t-100">
+    <div class="banner-text">
+        <h1>User Profile</h1>
+    </div>
+</div>
+<!-- User banner end -->
+<!-- User Profile Form -->
+<div class="container form-wrap">
+
+    @using (Html.BeginForm("UserProfile", "User", FormMethod.Post))
+    {
+        <div>
+
+            <div class="form-heading">
+                <h3>Basic Profile Details</h3>
+            </div>
+
+            <div class="form-row">
+
+                <div class="form-group col-md-6">
+                    <label for="first-name">First Name *</label>
+                    @Html.TextBoxFor(model => model.FirstName, new { @class = "form-control", placeholder = "Enter your first name"})
+                    
+                </div>
+
+                <div class="form-group col-md-6">
+                    <label for="last-name">Last Name *</label>
+                    @Html.TextBoxFor(model => model.LastName, new { @class = "form-control", placeholder = "Enter your last name" })
+                    
+                </div>
+
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="email">Email *</label>
+                    @Html.TextBoxFor(model => model.EmailID, new { @class = "form-control", placeholder = "Enter your email address" })
+                    
+                </div>
+
+                <div class="form-group col-md-6">
+                    <label for="dob">Date Of Birth</label>
+                    @Html.TextBoxFor(model => model.DOB, new { @type = "date", @class = "form-control", placeholder = "Enter your first name" })
+                    
+                </div>
+
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="gender">Gender</label>
+                    @Html.DropDownListFor(model => model.Gender, new SelectList(Model.genderModel, "Gender_Id", "Gender_Val"), "Select your Gender", new { @class = "form-control", style="height:50px;" })
+                </div>
+
+
+                <div class="form-group col-md-6">
+                    <label for="phone-number">Phone Number</label>
+
+
+                    <div class="row">
+
+                        <div class="col-md-3" style="width: 30%;">
+                            <div class="input-group mb-3">
+                                @Html.DropDownListFor(model => model.PhoneNumber_CountryCode, new SelectList(Model.CountryCodeModel, "Country_Code","Country_Code"), new { @class="form-control", style="height:50px;"})
+                            </div>
+                        </div>
+
+                        <div class="col-md-9" style="width: 70%; padding-left: 0;">
+                            @Html.TextBoxFor(model => model.PhoneNumber, new {@class = "form-control", placeholder = "Enter your phone number" })
+                            
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="form-row">
+
+                <div class="form-group col-md-6">
+                    <label for="profilePic">Profile Picture</label>
+                    <div class="upload-input">
+                        
+                        @Html.TextBoxFor(model => model.ProfilePicture, new { @class = "form-control", type = "file", accept = "image/*" })
+                        
+                        <div class="upload-img" id="upload_profile">
+                            <img src="~/Content/images/User-Profile/upload.png" alt="upload">
+                            <p>Upload a picture</p>
+                        </div>
+                        
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="form-heading">
+                <h3>Address Details</h3>
+            </div>
+
+            <div class="form-row">
+
+                <div class="form-group col-md-6">
+                    <label for="address1">Address Line 1 *</label>
+                    @Html.TextBoxFor(model => model.AddressLine1, new { @class = "form-control", placeholder = "Enter your address"})
+                    
+                </div>
+
+                <div class="form-group col-md-6">
+                    <label for="address2">Address Line 2</label>
+                    @Html.TextBoxFor(model => model.AddressLine2, new { @class = "form-control", placeholder = "Enter your address" })
+                    
+                </div>
+
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="city">City *</label>
+                    @Html.TextBoxFor(model => model.City, new { @class = "form-control", placeholder = "Enter your city"})
+                    
+                </div>
+
+                <div class="form-group col-md-6">
+                    <label for="state">State *</label>
+                    @Html.TextBoxFor(model => model.State, new { @class = "form-control", placeholder = "Enter your state"})
+                    
+                </div>
+
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="zipcode">ZipCode *</label>
+                    @Html.TextBoxFor(model => model.ZipCode, new { @class = "form-control", placeholder = "Enter your Zipcode"})
+                    
+                </div>
+
+
+                <div class="form-group col-md-6">
+                    <label for="country">Country *</label>
+                    <div class="input-group mb-3">
+                        @Html.DropDownListFor(model => model.Country, new SelectList(Model.countryModel,"Country_Id","Country_Val"), new { @class = "form-control"})
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div class="form-heading">
+                <h3>University and College Information</h3>
+            </div>
+
+            <div class="form-row">
+
+                <div class="form-group col-md-6">
+                    <label for="university">University</label>
+                    
+                    @Html.TextBoxFor(model => model.University, new { @class = "form-control", placeholder = "Enter your university"})
+                </div>
+
+                <div class="form-group col-md-6">
+                    <label for="college">College</label>
+                    
+                    @Html.TextBoxFor(model => model.College, new { @class = "form-control", placeholder = "Enter your college"})
+                </div>
+
+            </div>
+
+            <button type="submit" class="btn btn-primary m-b-20" id="submit-btn-user" value="UserProfile">SUBMIT</button>
+
+        </div>
+    }
+
+
+</div>
+<!-- User profile Form end -->
