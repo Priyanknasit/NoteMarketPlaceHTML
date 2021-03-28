@@ -64,13 +64,13 @@
                         <a class="nav-link" href="@Url.Action("Contact","Home")">Contact Us</a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="user_img" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="images/user/user-img.png"></a>
+                        <a class="user_img" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="@ViewBag.UserProfile"></a>
                         <div class="dropdown-menu">
                             <a href="@Url.Action("UserProfile","User")"><button class="dropdown-item" type="button">My Profile</button></a>
                             <a href="myDownloads.html"><button class="dropdown-item" type="button">My Downloads</button></a>
                             <a href="my_sold_notes.html"><button class="dropdown-item" type="button">My Sold Notes</button></a>
                             <a href="my_rejected_notes.html"><button class="dropdown-item" type="button">My Rejected Notes</button></a>
-                            <a href="change_pwd.html"><button class="dropdown-item" type="button">Change Password</button></a>
+                            <a href="@Url.Action("ChangePassword","Account")"><button class="dropdown-item" type="button">Change Password</button></a>
                             <a href="home-page.html"><button class="dropdown-item" type="button"><span>LOGOUT</span></button></a>
                         </div>
                     </li>

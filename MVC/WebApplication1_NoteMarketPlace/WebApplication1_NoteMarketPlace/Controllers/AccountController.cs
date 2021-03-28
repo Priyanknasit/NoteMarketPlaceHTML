@@ -264,5 +264,46 @@ namespace WebApplication1_NoteMarketPlace.Controllers
             return NewPassword;
         }
 
+        // change password
+        [Authorize]
+        public ActionResult ChangePassword()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult ChangePassword(ChangePassword pwd)
+        {
+            if(!ModelState.IsValid)
+            {
+                return View();
+            }
+
+            using (var _Context = new NotesMarketPlaceEntities())
+            {
+                // get current user
+                var currentUser = _Context.tblUsers.FirstOrDefault(model => model.EmailID == User.Identity.Name);
+
+                // check old password
+                if(!currentUser.Password.Equals(pwd.OldPassword))
+                {
+                    ModelState.AddModelError("Error", "Old password is wrong");
+                    return View();
+                }
+                else
+                {
+                    // update password
+                    currentUser.Password = pwd.ConfirmPassword;
+                    currentUser.ModifiedDate = DateTime.Now;
+                    _Context.SaveChanges();
+
+                    FormsAuthentication.SignOut();
+
+                    return RedirectToAction("Login", "Account");
+                }
+            }
+        }
+
     }
 }

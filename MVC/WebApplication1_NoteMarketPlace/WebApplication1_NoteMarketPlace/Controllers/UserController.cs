@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Routing;
 using WebApplication1_NoteMarketPlace.DBModel;
 using WebApplication1_NoteMarketPlace.Models;
 
@@ -15,6 +16,34 @@ namespace WebApplication1_NoteMarketPlace.Controllers
         public ActionResult SearchNotes()
         {
             return View();
+        }
+
+        // initialize user information
+        protected override void Initialize(RequestContext requestContext)
+        {
+            base.Initialize(requestContext);
+            if(requestContext.HttpContext.User.Identity.IsAuthenticated)
+            {
+                using (var _Context = new NotesMarketPlaceEntities())
+                {
+                    // get current user profile image
+                    var currentUserImg = (from details in _Context.tblUserProfiles
+                                          join users in _Context.tblUsers on details.UserID equals users.ID
+                                          where users.EmailID == requestContext.HttpContext.User.Identity.Name
+                                          select details.ProfilePicture).FirstOrDefault();
+
+                    if(currentUserImg == null)
+                    {
+                        // get deafult image
+                        var defaultImg = _Context.tblSystemConfigurations.FirstOrDefault(model => model.Key == "DefaultMemberDisplayPicture").Values;
+                        ViewBag.UserProfile = defaultImg;
+                    }
+                    else
+                    {
+                        ViewBag.UserProfile = currentUserImg;
+                    }
+                }
+            }
         }
 
         [Authorize]
@@ -105,6 +134,7 @@ namespace WebApplication1_NoteMarketPlace.Controllers
         {
             using(var _Context = new NotesMarketPlaceEntities())
             {
+
                 // all type
                 var type = _Context.tblNoteTypes.ToList();
 
@@ -168,7 +198,7 @@ namespace WebApplication1_NoteMarketPlace.Controllers
                 var currentuserID = _Context.tblUsers.FirstOrDefault(model => model.EmailID == User.Identity.Name).ID;
 
                 // default image for book
-                // string bookDefaultImg = _Context.tblSystemConfigurations.FirstOrDefault(model => model.Key == "DefaultNoteDisplayPicture").Values;
+                string bookDefaultImg = _Context.tblSystemConfigurations.FirstOrDefault(model => model.Key == "DefaultNoteDisplayPicture").Values;
 
                 // edit draft details
                 if(!id.Equals(null))
@@ -177,6 +207,11 @@ namespace WebApplication1_NoteMarketPlace.Controllers
                     var attachment = _Context.tblSellerNotesAttachements.SingleOrDefault(model => model.NoteID == id);
 
                     note.MaptoModel(noteDetails, attachment);
+
+                    noteDetails.DisplayPicture = "../Members/" + currentuserID + "/" + id + "/" + noteDetails.DisplayPicture;
+                    noteDetails.NotesPreview = "../Members/" + currentuserID + "/" + id + "/Attachment/" + noteDetails.NotesPreview;
+                    attachment.FilePath = "../Members/" + currentuserID + "/" + id + "/Attachment/";
+
                     noteDetails.ModificationDate = DateTime.Now;
                     attachment.ModifiedDate = DateTime.Now;
 
@@ -194,7 +229,7 @@ namespace WebApplication1_NoteMarketPlace.Controllers
                         Title = note.Title,
                         SellerID = currentuserID,
                         Category = note.Category,
-                        //DisplayPicture = note.DisplayPicture == null ? bookDefaultImg : note.DisplayPicture,
+                        DisplayPicture = note.DisplayPicture == null ? bookDefaultImg : "../Members/"+ currentuserID+ "/"+ note.DisplayPicture,
                         NoteType = note.NoteType,
                         NumberofPages = note.NumberofPages,
                         Description = note.Description,
@@ -216,7 +251,7 @@ namespace WebApplication1_NoteMarketPlace.Controllers
                     var CreatedNote = noteDetails.FirstOrDefault(model => model.SellerID == currentuserID && model.Title == note.Title).ID;
 
                     // make folder
-                    string path = MakeDirectory(currentuserID, CreatedNote);
+                    string path = CreateDirectory(currentuserID, CreatedNote);
 
                     var attachments = _Context.tblSellerNotesAttachements;
                     attachments.Add(new tblSellerNotesAttachement
@@ -235,7 +270,7 @@ namespace WebApplication1_NoteMarketPlace.Controllers
             }
         }
 
-        public string MakeDirectory(int userID, int noteID)
+        public string CreateDirectory(int userID, int noteID)
         {
             string path = @"C:\Users\ASUS\source\repos\WebApplication1_NoteMarketPlace\WebApplication1_NoteMarketPlace\Members\" + userID + "\\" + noteID + "\\Attachment";
             if(!Directory.Exists(path))
@@ -265,7 +300,7 @@ namespace WebApplication1_NoteMarketPlace.Controllers
                 var currentuserID = _Context.tblUsers.FirstOrDefault(model => model.EmailID == User.Identity.Name).ID;
 
                 // default book image
-                // var bookDefaultImg = _Context.tblSystemConfigurations.FirstOrDefault(model => model.Key == "DefaultNoteDisplayPicture").Values;
+                var bookDefaultImg = _Context.tblSystemConfigurations.FirstOrDefault(model => model.Key == "DefaultNoteDisplayPicture").Values;
 
                 // pusblish as a draft notes
                 if(!id.Equals(null))
@@ -290,7 +325,7 @@ namespace WebApplication1_NoteMarketPlace.Controllers
                         Title = note.Title,
                         SellerID = currentuserID,
                         Category = note.Category,
-                        //DisplayPicture = note.DisplayPicture == null ? bookDefaultImg : note.DisplayPicture,
+                        DisplayPicture = note.DisplayPicture == null ? bookDefaultImg : note.DisplayPicture,
                         NoteType = note.NoteType,
                         NumberofPages = note.NumberofPages,
                         Description = note.Description,
@@ -310,7 +345,7 @@ namespace WebApplication1_NoteMarketPlace.Controllers
 
                     var createdNote = noteDetails.FirstOrDefault(model => model.SellerID == currentuserID && model.Title == note.Title).ID;
 
-                    string path = MakeDirectory(currentuserID, createdNote);
+                    string path = CreateDirectory(currentuserID, createdNote);
 
                     var attachments = _Context.tblSellerNotesAttachements;
                     attachments.Add(new tblSellerNotesAttachement
@@ -353,6 +388,7 @@ namespace WebApplication1_NoteMarketPlace.Controllers
             return "Dashboard";
         }
 
+        [Route("User/UserProfile")]
         public ActionResult UserProfile()
         {
             using (var _Context = new NotesMarketPlaceEntities())
@@ -434,6 +470,8 @@ namespace WebApplication1_NoteMarketPlace.Controllers
                 // user details
                 var userdetails = _Context.tblUserProfiles.FirstOrDefault(model => model.UserID == currentUser);
 
+                var defaultImg = _Context.tblSystemConfigurations.Single(x => x.Key == "DefaultMemberDisplayPicture").Values;
+
                 // check user available or not
                 if(userdetails != null && user != null)
                 {
@@ -442,6 +480,10 @@ namespace WebApplication1_NoteMarketPlace.Controllers
                     var update = _Context.tblUserProfiles.FirstOrDefault(model => model.UserID == currentUser);
 
                     user.MaptoModel(userUpdate, update);
+
+                    // "../Members/"+ currentUser+ "/"+user.ProfilePicture  aa lakhi nakj
+                    update.ProfilePicture = "../Members/" + currentUser + "/" + user.ProfilePicture;
+
                     userUpdate.ModifiedDate = DateTime.Now;
                     update.ModifiedDate = DateTime.Now;
 
@@ -461,7 +503,7 @@ namespace WebApplication1_NoteMarketPlace.Controllers
                         Gender = user.Gender,
                         PhoneNumber_CountryCode = user.PhoneNumber_CountryCode,
                         PhoneNumber = user.PhoneNumber,
-                        ProfilePicture = user.ProfilePicture,
+                        ProfilePicture = user.ProfilePicture == null ? default : "../Members/"+ currentUser+ "/"+user.ProfilePicture,
                         AddressLine1 = user.AddressLine1,
                         AddressLine2 = user.AddressLine2,
                         City = user.City,
@@ -475,7 +517,7 @@ namespace WebApplication1_NoteMarketPlace.Controllers
 
                     _Context.SaveChanges();
 
-                    MakeDirectory(add.FirstOrDefault(model => model.UserID == currentUser).ID);
+                    CreateDirectory(add.FirstOrDefault(model => model.UserID == currentUser).ID);
                     return RedirectToAction("UserProfile");
                 }
             }
@@ -483,7 +525,7 @@ namespace WebApplication1_NoteMarketPlace.Controllers
             
         }
 
-        public string MakeDirectory(int userID)
+        public string CreateDirectory(int userID)
         {
             string path = @"C:\Users\ASUS\source\repos\WebApplication1_NoteMarketPlace\WebApplication1_NoteMarketPlace\Members\" + userID;
 
