@@ -86,7 +86,7 @@ namespace WebApplication1_NoteMarketPlace.Controllers
                 SmtpClient smtp = new SmtpClient();
                 smtp.Host = "smtp.gmail.com";
                 smtp.EnableSsl = true;
-                NetworkCredential NetworkCred = new NetworkCredential("kanokalo345@gmail.com", "Tatvasoft@123");
+                NetworkCredential NetworkCred = new NetworkCredential("kanokalo345@gmail.com", "password");
                 smtp.UseDefaultCredentials = true;
                 smtp.Credentials = NetworkCred;
                 smtp.Port = 587;
