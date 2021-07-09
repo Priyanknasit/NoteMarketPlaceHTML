@@ -49,7 +49,7 @@ namespace WebApplication1_NoteMarketPlace.Controllers
                     var credential = new NetworkCredential
                     {
                         UserName = "kanokalo345@gmail.com",  // replace with valid value
-                        Password = "Tatvasoft@123"  // replace with valid value
+                        Password = ""  // replace with valid value
                     };
                     smtp.Credentials = credential;
                     smtp.Host = "smtp.gmail.com";
